@@ -1,0 +1,20 @@
+version = 1
+
+[[analyzers]]
+name = "shell"
+enabled = true
+
+[[analyzers]]
+name = "javascript"
+enabled = true
+
+  [analyzers.meta]
+  plugins = ["vue"]
+
+[[analyzers]]
+name = "ruby"
+enabled = true
+
+[[transformers]]
+name = "rubocop"
+enabled = true
