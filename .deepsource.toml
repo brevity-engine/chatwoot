@@ -1,12 +1,20 @@
 version = 1
 
 [[analyzers]]
-name = "go"
+name = "shell"
 enabled = true
 
-  [analyzers.meta]
-  import_root = ["github.com/brevity-engine/chatwoot"]
+[[analyzers]]
+name = "ruby"
+enabled = true
 
 [[analyzers]]
 name = "javascript"
+enabled = true
+
+  [analyzers.meta]
+  plugins = ["vue"]
+
+[[transformers]]
+name = "rubocop"
 enabled = true
