@@ -122,11 +122,7 @@ export default {
       const shouldRemove = this.isAgentSelected(agentId);
 
       let result = [];
-      if (shouldRemove) {
-        result = this.selectedAgents.filter(item => item !== agentId);
-      } else {
-        result = [...this.selectedAgents, agentId];
-      }
+      result = shouldRemove ? this.selectedAgents.filter(item => item !== agentId) : [...this.selectedAgents, agentId];
 
       this.updateSelectedAgents(result);
     },
