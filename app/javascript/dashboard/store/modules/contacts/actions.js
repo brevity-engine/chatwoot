@@ -59,11 +59,8 @@ export const actions = {
       commit(types.SET_CONTACT_UI_FLAG, { isUpdating: false });
     } catch (error) {
       commit(types.SET_CONTACT_UI_FLAG, { isUpdating: false });
-      if (error.response?.data?.contact) {
-        throw new DuplicateContactException(error.response.data.contact);
-      } else {
-        throw new Error(error);
-      }
+      const error_ = error.response?.data?.contact ? new DuplicateContactException(error.response.data.contact) : new Error(error);
+      throw error_;
     }
   },
 
@@ -75,11 +72,8 @@ export const actions = {
       commit(types.SET_CONTACT_UI_FLAG, { isCreating: false });
     } catch (error) {
       commit(types.SET_CONTACT_UI_FLAG, { isCreating: false });
-      if (error.response?.data?.message) {
-        throw new ExceptionWithMessage(error.response.data.message);
-      } else {
-        throw new Error(error);
-      }
+      const error_ = error.response?.data?.message ? new ExceptionWithMessage(error.response.data.message) : new Error(error);
+      throw error_;
     }
   },
 
@@ -93,11 +87,8 @@ export const actions = {
       };
       commit(types.SET_CONTACT_ITEM, contact);
     } catch (error) {
-      if (error.response?.data?.message) {
-        throw new ExceptionWithMessage(error.response.data.message);
-      } else {
-        throw new Error(error);
-      }
+      const error_ = error.response?.data?.message ? new ExceptionWithMessage(error.response.data.message) : new Error(error);
+      throw error_;
     } finally {
       commit(types.SET_CONTACT_UI_FLAG, { isFetchingInboxes: false });
     }
