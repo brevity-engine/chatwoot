@@ -1,5 +1,6 @@
 export const buildSearchParamsWithLocale = search => {
   const locale = window.WOOT_WIDGET.$root.$i18n.locale;
+  console.log("HELLO")
   if (search) {
     search = `${search}&locale=${locale}`;
   } else {
